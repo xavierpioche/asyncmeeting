@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Test video player with pause position</title>
+        <link rel="stylesheet" type="text/css" href="/css/video.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <table border=0 width=100% height=100%>
+    <tr><td align=center valign=middle>
+        <video id="vid" src="https://raw.githubusercontent.com/Ahmetaksungur/aksvideoplayer/main/videos/video-360.mp4" controls></video> 
+        <script type="text/javascript" src="/js/video.js"></script>          
+        <br>
+        <h1>My Async cloud meeting</h1>
+            <b>Adding comments to meeting video</b>
+            <br><br>
+            <form name="myForm" id="myForm" action="http://www.asyncmeeting.com/save_comments.php" method="POST">
+            <input type="hidden" name="VideoName" value="007">
+                <table>
+                    <tr><td>Comments:</td></tr>
+                    <tr><td id="petCell"><input type="button" id="addPet" value="Add Comments" /><br /></td></tr>
+                </table>
+            <br><br><input type="submit" name="submit" value="Save">
+            </form>
+
+        <script type="text/javascript" src="/js/comments.js"></script>          
+    </td></tr>
+    </table>
+    </body>
+</html>
+
