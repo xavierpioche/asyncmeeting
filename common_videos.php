@@ -25,7 +25,7 @@ function video_comments_save($v_id, $v_time, $v_comment)
 function video_comments_list($v_id)
 {
 	global $pdo;
-	$sql="select comment_id, comment_time, comment_value from videos_comments where comment_videolink=:v_id";
+	$sql="select comment_id, comment_time, comment_value from videos_comments where comment_videolink=:v_id order by comment_time";
 	$data = [];
 	$data = [
 		"v_id" => $v_id

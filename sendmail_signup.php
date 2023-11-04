@@ -18,8 +18,8 @@ if (find_user_by_username($email)==-1)
 		send_activation_email($email, $activation_code);
 	}
 
-	echo "$email , $activation_code";
-//header('Location: signin.php');
+	echo "debug: <a href=activate.php?email=$email&activation_code=$activation_code>activate link in the mail</a>";
+	//header('Location: signin.php');
 } else {
 	echo "l email existe deja";
 }

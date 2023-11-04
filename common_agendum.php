@@ -136,4 +136,17 @@ function agendum_get_my_meeting($a_id)
 		return -1;
 	}
 }
+function agendum_get_name($a_id)
+{
+        global $pdo;
+        $sql="select agendum_label from agendum where agendum_id=:a_id";
+        $data = [];
+        $data = [
+                "a_id" => $a_id
+        ];
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($data);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return($row['agendum_label']);
+}
 ?>

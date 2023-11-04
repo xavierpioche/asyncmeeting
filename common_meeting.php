@@ -256,4 +256,17 @@ function meeting_invite_remove($m_id,$u_mail)
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute($data);
 }
+function meeting_get_name($m_id)
+{
+	global $pdo;
+	$sql="select meeting_name from meetings where meeting_id=:m_id";
+	$data = [];
+	$data = [
+		"m_id" => $m_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	return($row['meeting_name']);	
+}
 ?>

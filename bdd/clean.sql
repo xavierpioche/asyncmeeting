@@ -1,0 +1,10 @@
+delete from agendum;
+delete from agendum_videos;
+delete from meeting_roles_by_users ;
+delete from meeting;
+delete from participants;
+delete from participants_invite;
+delete from system_users ;
+delete from todo_list;
+delete from videos;
+delete from videos_comments;

@@ -49,7 +49,7 @@ try {
 			$agendum=agendum_list_by_meeting($m_id);
 			foreach ($agendum as $value)
 			{
-				echo "<tr><td>$value[1]</td></tr>";
+				echo "<tr><td><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td></tr>";
 			}
 		?>
 		</tbody>
@@ -87,7 +87,7 @@ try {
 		?>
 		<table border=1 width=100%>
 		<tr><td align=center>
-			<?php echo "<iframe src='video_frame.php?a_id=$a_id' width=1000 height=800>" ?>
+			<?php echo "<iframe name=theframe src='video_frame.php?a_id=$a_id' width=1000 height=800>" ?>
 			</iframe>
 		</td></tr>
 		</table>

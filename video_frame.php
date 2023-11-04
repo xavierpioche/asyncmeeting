@@ -21,8 +21,6 @@ try {
     </head>
     <body>
 	<script type="text/javascript" src="/js/dashboard.js"></script>
-      <h1><?php echo get_label(34,$language); ?></h1>
-      <p>
         <?php 
             $redis = new Redis(); 
             $redis->connect($redis_db, $redis_port);
@@ -39,6 +37,8 @@ try {
                         {
 
 ?>
+      <h1><?php echo get_label(34,$language); ?> in <?php echo agendum_get_name($a_id); ?> </h1>
+	<p>
 	<table width=100% height=100% border=1>
 	<tr><td align=center>
 		<table>
@@ -46,7 +46,8 @@ try {
 		<?php 
 			//echo $_GET['a_id'];
 			if ($a_id==-1) {
-				// il faut proposer de rajouter une video
+				//why ? 
+				
 			} else {
 				// on recupere les videos du sujet
 				if( !isset($_GET['v_id']) || empty($_GET['v_id']) )
@@ -56,6 +57,10 @@ try {
 					$v_id=$_GET['v_id'];
 					$arr_videos=agendum_get_videos($a_id,$v_id);
 				}
+				if(empty($arr_videos))
+				{
+					echo "il faut rajouter une video";
+				} else {
 				//print_r($arr_videos);
 		?>
 			<video id="vid" src="<?php echo $arr_videos[0]['video_link']; ?>" controls></video> 
@@ -92,6 +97,7 @@ try {
 		        <script type="text/javascript" src="/js/comments.js"></script> 
 		<?php
 				
+				}
 			}
 		?>
 		</td></tr>
