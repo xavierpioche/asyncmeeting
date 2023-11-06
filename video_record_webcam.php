@@ -14,11 +14,12 @@ try {
 
 <html>
     <head>
-      <title><?php echo get_label(24,$language); ?></title>
+      <title><?php echo get_label(39,$language); ?></title>
 	<link rel='stylesheet' href='/css/style.css' type='text/css' />
     </head>
     <body>
-      <h1><?php echo get_label(24,$language); ?></h1>
+	<script type="text/javascript" src="/js/dashboard.js"></script>
+      <h1><?php echo get_label(39,$language); ?></h1>
       <p>
         <?php 
             $redis = new Redis(); 
@@ -30,54 +31,30 @@ try {
 //----------------------
                    // echo "Welcome, " . $user_data['first_name'] . ' ' . $user_data['last_name'] . "<br>"
                     //     . "Your token is " . $user_data['token'] . " your id is ". $user_id; 
+			$m_id=$_GET['m_id'];                                                                                                                                
+                        $a_id=$_GET['a_id'];
 
-		$m_name=substr($_POST['meeting_name'],0,100);
-		$m_owner=$user_id;
-		if (meeting_exist($m_owner,$m_name)===false)
-		{
-			meeting_create($m_owner,$m_name);
-			$m_id=meeting_exist($m_owner,$m_name);
-			// par defaut on cree un summary
-			$summary=get_label(33,$language);
-			meeting_create_agendum($m_id[0],$summary,1);
-			// 
-			foreach ($_POST['agenda'] as $value)
-			{
-				meeting_create_agendum($m_id[0],$value);
-			}
-			$scount=0;
-			foreach ($_POST['participants'] as $value)
-			{
-				$test="myselect$scount";
-				$role=$_POST[$test];
-				meeting_invite_participants($m_id[0],$value,$role);
-				$scount++;
-			}
-			meeting_add_participants($m_id[0],$m_owner,0);
-			$msg=get_label(29,$language);
-		} else {
-			$msg=get_label(28,$language);
-		}
-			
+
 ?>
 	<table width=100% height=100% border=1>
 	<tr><td align=center>
-		<table border=0>
-		<tr><td align=center><?php echo $msg; ?></td></tr>
-		<tr><td><a href=dashboard.php><?php echo get_label(15,$language); ?></a></td></tr>
-		</table>
+<?php
+
+                echo "<a href=video_frame.php?m_id=$m_id&a_id=$a_id>".get_label(15,$language)."</a>";
+
+?>
 	</td></tr>
 	</table>
 
 <?php
 //----------------------
                 } else {
+                    //echo "Invalid token.";
 			header('Location: index.php');
-                    #echo "Invalid token.";
                 }
             } else {
-		header('Location: index.php');
-                 # echo "Access denied.";
+                  //echo "Access denied.";
+			header('Location: index.php');
             }                         
         ?>
 

@@ -39,10 +39,10 @@ try {
 ?>
       <h1><?php echo get_label(34,$language); ?> in <?php echo agendum_get_name($a_id); ?> </h1>
 	<p>
-	<table width=100% height=100% border=1>
+	<table width=100% height=100% border=0>
 	<tr><td align=center>
-		<table>
-		<tr><td align=left>
+		<table border=0>
+		<tr><td align=center>
 		<?php 
 			//echo $_GET['a_id'];
 			if ($a_id==-1) {
@@ -57,40 +57,50 @@ try {
 					$v_id=$_GET['v_id'];
 					$arr_videos=agendum_get_videos($a_id,$v_id);
 				}
+					echo "<table>";
+					echo "<thead>";
+					echo "<tr><th>insert a video link</th><th>record a video webcam</th></tr>";
+					echo "</thead><tbody>";
+					echo "<tr><td><a href=video_insert_link.php?a_id=$a_id&m_id=$m_id><img src=/images/upload.png alt='insert a video link'></a></td><td><a href=video_record_webcam.php?a_id=$a_id&m_id=$m_id><img src=/images/webcam.png alt='record with uour webcam'></a></td></tr>";
+					echo "</table><br><br>";
 				if(empty($arr_videos))
 				{
-					echo "il faut rajouter une video";
 				} else {
 				//print_r($arr_videos);
+				$v_id=$arr_videos[0]['video_id'];
 		?>
 			<video id="vid" src="<?php echo $arr_videos[0]['video_link']; ?>" controls></video> 
        			<script type="text/javascript" src="/js/video.js"></script>          
+		        <br>
+			<a href=video_delete.php?v_id=<?php echo $v_id; ?>&a_id=<?php echo $a_id; ?>&m_id=<?php echo $m_id; ?> onclick="return confirm('<?php echo get_label(38,$language); ?>');"><img src=/images/delete.png alt="delete video"></a>
 		        <br>
 		        <h1></h1>
 		            <b><?php echo $arr_videos[0]['video_name'];?></b>
 		            <br><br>
 		            <form name="myForm" id="myForm" action="http://www.asyncmeeting.com/video_save_comments.php?a_id=<?php echo $a_id; ?>&v_id=<?php echo $arr_videos[0]['video_id']; ?>" method="POST">
 		            <input type="hidden" name="VideoName" value="<?php echo $arr_videos[0]['video_id'] ?>">
-				<table width=100%><tr><td>
+				<table width=100% border=0><tr><td>
 		                <table>
 		                    	<thead><tr><th>New Comments:</th></tr></thead><tbody>
                			    	<tr><td id="petCell"><input type="button" id="addPet" value="Add Comments" /><br /></td></tr>
 					</tbody>
 		                </table>
+            			<br><input type="submit" name="submit" value="<?php echo get_label(35,$language);?>">
 				</td><td>
 				<table>
-					<thead><tr><th colspan=2>Comments:</th></tr></thead><tbody>
+					<thead><tr><th colspan=4>Comments:</th></tr></thead><tbody>
 					<?php
 						$c_arr=video_comments_list($arr_videos[0]['video_id']);
 						foreach($c_arr as $values)
 						{
-							echo "<tr><td>".$values['comment_time']."</td><td>".$values['comment_value']."</td></tr>";
+							echo "<tr><td>".$values['comment_time']."</td><td>".$values['comment_value']."</td>";
+							echo "<td><img src=/images/edit-button.png></td><td><img src=/images/remove.png></td>";
+							echo "</tr>";
 						}
 					?>
 					</tbody>	
 				</table>
 				</td></tr>
-            			<tr><td><br><input type="submit" name="submit" value="<?php echo get_label(35,$language);?>"></td></tr>
 				</table>
             			</form>
 
@@ -124,6 +134,7 @@ try {
 <?php
 	} else {
 		// ce n est pas notre agendum
+		echo "m_id=$m_id a_id=$a_id u_id=$user_id<br>";
 		echo "not authorized";
 	}
 //----------------------

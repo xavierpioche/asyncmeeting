@@ -36,22 +36,25 @@ try {
                    // echo "Welcome, " . $user_data['first_name'] . ' ' . $user_data['last_name'] . "<br>"
                     //     . "Your token is " . $user_data['token'] . " your id is ". $user_id; 
 ?>
-	<table width=100% height=100% border=1>
+	<table width=100% height=100% border=0>
 	<tr><td align=center>
-	<table border=1 width=100%>
+	<table border=0 width=100%>
 	<tr><td align=center>
-		<table border=1 width=100% class=hoverTable>
+		<table border=1 width=100 class=hoverTable>
 		<thead>
 		<?php
-			echo "<tr><th scope='col'>";
+			echo "<tr><th scope='col' colspan=3>";
 				echo  get_label(25,$language);
 			echo " : </th></tr></thead><tbody>";
 			$agendum=agendum_list_by_meeting($m_id);
 			foreach ($agendum as $value)
 			{
-				echo "<tr><td><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td></tr>";
+				echo "<tr><td width=100><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td>";
+				echo "<td width=26px><img src=/images/edit-button.png></td><td width=26px><img src=/images/remove.png></td>";
+				echo "</tr>";
 			}
 		?>
+			<tr><td align=center colspan=3><img src=/images/more.png width=16 height=16></td></tr>
 		</tbody>
 		</table>
 		<br>
@@ -72,10 +75,10 @@ try {
 	</td><td align=center>
 		<?php
 			// quel agendum
-			if (isset($_GET['agendum'])&&(is_numeric($_GET['agendum'])))
+			if (isset($_GET['a_id'])&&(is_numeric($_GET['a_id'])))
 			{
 				// est ce que c est le notre
-				$a_id=$_GET['agendum'];
+				$a_id=$_GET['a_id'];
 				if (!agendum_verify_meeting($m_id,$a_id))
 				{
 					$a_id=-1;	
@@ -85,9 +88,9 @@ try {
 				$a_id = agendum_get_default($m_id);
 			}
 		?>
-		<table border=1 width=100%>
+		<table border=0 width=100%>
 		<tr><td align=center>
-			<?php echo "<iframe name=theframe src='video_frame.php?a_id=$a_id' width=1000 height=800>" ?>
+			<?php echo "<iframe name=theframe src='video_frame.php?a_id=$a_id' width=100% height=800>" ?>
 			</iframe>
 		</td></tr>
 		</table>
@@ -103,10 +106,12 @@ try {
 			}
 //----------------------
                 } else {
-                    echo "Invalid token.";
+			header('Location: index.php');
+                    #echo "Invalid token.";
                 }
             } else {
-                  echo "Access denied.";
+		header('Location: index.php');
+                 # echo "Access denied.";
             }                         
         ?>
 

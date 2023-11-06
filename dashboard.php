@@ -105,7 +105,7 @@ try {
 			</table>
 		</td></tr>
 		<tr><td colspan=4 align=center>
-			<table border=0>
+			<table border=0 align=center>
 			<thead>
 			<tr><th align=center colspan=2><?php echo get_label(30,$language); ?></th></tr>
 			</thead>

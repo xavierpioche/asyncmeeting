@@ -45,10 +45,77 @@ function video_comments_list($v_id)
 function video_comments_delete($v_id, $c_id)
 {
 	global $pdo;
+	$sql="delete from videos_comments where comment_videolink=:v_id and comment_id=:c_id";
+	$data = [];
+	$data = [
+		"v_id" => $v_id,
+		"c_id" => $c_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);	
 }
 
-function video_comments_modify($v_id, $c_id, $c_comment)
+function video_comments_delete_all($v_id)
 {
 	global $pdo;
+	$sql="delete from videos_comments where comment_videolink=:v_id";
+	$data = [];
+	$data = [
+		"v_id" => $v_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);	
+}
+
+function video_comments_get($c_id)
+{
+	global $pdo;
+	$sql="select comment_value from videos_comments where comment_id=:c_id";
+	$data = [];
+	$data = [
+		"c_id" => $c_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);	
+}
+
+function video_comments_modify($c_id, $c_comment)
+{
+	global $pdo;
+	$sql="update videos_comments set comment_value=:c_value where comment_id=:c_id";
+	$data = [];
+	$data = [
+		"c_id" => $c_id,
+		"c_value" => $c_value
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);	
+}
+function video_insert_link($m_id,$a_id,$u_id,$v_url,$v_name)
+{
+	global $pdo;
+	$sql="insert into videos (meeting_id, agendum_id, video_owner, video_link, video_name) values (:m_id,:a_id,:u_id,:v_url,:v_name)";
+	$data = [];
+	$data = [
+		"m_id" => $m_id,
+		"a_id" => $a_id,
+		"u_id" => $u_id,
+		"v_url" => $v_url,
+		"v_name" => $v_name
+	];
+	$stmt = $pdo->prepare($sql);
+        $stmt->execute($data);
+}
+function video_delete($v_id,$u_id)
+{
+	global $pdo;
+	$sql="delete from videos where video_id=:v_id and video_owner=:u_id";
+	$data = [];
+	$data = [
+		"v_id" => $v_id,
+		"u_id" => $u_id
+	];
+	$stmt = $pdo->prepare($sql);
+        $stmt->execute($data);
 }
 ?>
