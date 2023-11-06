@@ -34,10 +34,11 @@ try {
 ?>
 	<table width=100% height=100% border=1>
 	<tr><td align=center>
-		<table border=0 width=600>
+		<table border=0 width=600 align=center>
 		<tr><td align=center colspan=4><a href="meeting_create.php"><?php echo get_label(24,$language); ?></a></td></tr>
+		<tr><td>&nbsp;</td></tr>
 		<tr><td align=center valign=top>
-			<table border=1>
+			<table border=1 class=btable>
 			<thead>
 			<tr><th align=center><?php echo get_label(20,$language); ?></th></tr>
 			</thead>
@@ -54,7 +55,7 @@ try {
 			</table>
 		</td>
 		<td align=center valign=top>
-			<table border=1>
+			<table border=1 class=btable>
 			<thead>
 			<tr><th align=center><?php echo get_label(21,$language); ?></th></tr>
 			</thead>
@@ -71,7 +72,7 @@ try {
 			</table>
 		</td>
 		<td align=center valign=top>
-			<table border=1>
+			<table border=1 class=btable>
 			<thead>
 			<tr><th align=center><?php echo get_label(22,$language); ?></th></tr>
 			</thead>
@@ -88,7 +89,7 @@ try {
 			</table>
 		</td>
 		<td align=center valign=top>
-			<table border=1>
+			<table border=1 class=btable>
 			<thead>
 			<tr><th align=center><?php echo get_label(23,$language); ?></th></tr>
 			</thead>
@@ -105,7 +106,7 @@ try {
 			</table>
 		</td></tr>
 		<tr><td colspan=4 align=center>
-			<table border=0 align=center>
+			<table border=1 align=center class=btable>
 			<thead>
 			<tr><th align=center colspan=2><?php echo get_label(30,$language); ?></th></tr>
 			</thead>
@@ -124,7 +125,7 @@ try {
 			</table>
 		</td></tr>
 		<tr><td colspan=4 class=inter>&nbsp;</td></tr>
-		<tr><td colspan=4 align=center><a href=logout.php>signout</a></td></tr>
+		<tr><td colspan=4 align=center><br><a href=logout.php>signout</a></td></tr>
 		</table>
 	</td></tr>
 	</table>

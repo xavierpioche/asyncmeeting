@@ -19,7 +19,7 @@ try {
       <link rel='stylesheet' href='/css/style.css' type='text/css' />
     </head>
     <body>
-      <h1><?php echo get_label(31,$language); ?></h1>
+      <h1><?php echo get_label(31,$language)."&nbsp;".meeting_get_name($_GET['m_id']); ?></h1>
       <p>
         <?php 
             $redis = new Redis(); 
@@ -49,16 +49,16 @@ try {
 			$agendum=agendum_list_by_meeting($m_id);
 			foreach ($agendum as $value)
 			{
-				echo "<tr><td width=100><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td>";
+				echo "<tr><td width><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td>";
 				echo "<td width=26px><img src=/images/edit-button.png></td><td width=26px><img src=/images/remove.png></td>";
 				echo "</tr>";
 			}
 		?>
-			<tr><td align=center colspan=3><img src=/images/more.png width=16 height=16></td></tr>
+			<tr><td align=center colspan=3><img src=/images/more.png width=24 height=24></td></tr>
 		</tbody>
 		</table>
 		<br>
-		<table border=1 width=100%>
+		<table border=1 width=100% class=btable>
 		<thead>
 		<?php
 			echo "<tr><th scope='col'>";

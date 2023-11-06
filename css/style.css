@@ -1,5 +1,5 @@
 body {
-  background-color: #eeeeee;
+  background-color: #e4f0f5;
 }
 
 
@@ -20,17 +20,36 @@ caption {
 
 table {
   border-collapse: collapse;
-  border: 0px solid rgb(200, 200, 200);
+  border: 0px solid rgb(25, 53, 65);
+  #border: 0px solid rgb(200, 200, 200);
+  border-color: #3f87a6;
+  #border-color: #e4f0f5;
   letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
 }
 
-td,
+td {
+  border: 0px;
+  text-align: center;
+}
+
+.btable td {
+  border: 1px solid rgb(25,53, 65);
+  border-color: #3f87a6;
+  text-align: center;
+}
 th {
-  border: 1px solid rgb(190, 190, 190);
+  border: 1px solid rgb(25,53,65);
+  #border: 1px solid rgb(190, 190, 190);
   padding: 5px 10px;
   text-align: center;
+}
+
+h1 {
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 1.8rem;
 }
 
 .inter {
@@ -42,7 +61,8 @@ th {
 	border-collapse:collapse; 
 }
 .hoverTable td{ 
-	padding:7px; border:#4e95f4 1px solid;
+	padding:7px; border:#3f87a6 1px solid;
+	#padding:7px; border:#4e95f4 1px solid;
 }
 	/* Define the default color for all the table rows */
 .hoverTable tr{
@@ -50,7 +70,7 @@ th {
 	background: #e4f0f5;
 }
 .hoverTable th {
-  border: 1px solid rgb(190, 190, 190);
+  border: 1px solid rgb(25, 53, 65);
   padding: 5px 10px;
   background-color: #3f87a6;
 }

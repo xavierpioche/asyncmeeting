@@ -37,7 +37,7 @@ try {
                         {
 
 ?>
-      <h1><?php echo get_label(34,$language); ?> in <?php echo agendum_get_name($a_id); ?> </h1>
+      <h1><?php echo get_label(34,$language); ?>&nbsp;<?php echo get_label(42,$language); ?>&nbsp;<?php echo agendum_get_name($a_id); ?> </h1>
 	<p>
 	<table width=100% height=100% border=0>
 	<tr><td align=center>
@@ -57,7 +57,7 @@ try {
 					$v_id=$_GET['v_id'];
 					$arr_videos=agendum_get_videos($a_id,$v_id);
 				}
-					echo "<table>";
+					echo "<table class=btable>";
 					echo "<thead>";
 					echo "<tr><th>insert a video link</th><th>record a video webcam</th></tr>";
 					echo "</thead><tbody>";
@@ -72,22 +72,21 @@ try {
 			<video id="vid" src="<?php echo $arr_videos[0]['video_link']; ?>" controls></video> 
        			<script type="text/javascript" src="/js/video.js"></script>          
 		        <br>
-			<a href=video_delete.php?v_id=<?php echo $v_id; ?>&a_id=<?php echo $a_id; ?>&m_id=<?php echo $m_id; ?> onclick="return confirm('<?php echo get_label(38,$language); ?>');"><img src=/images/delete.png alt="delete video"></a>
-		        <br>
-		        <h1></h1>
 		            <b><?php echo $arr_videos[0]['video_name'];?></b>
+		        <br><br>
+			<a href=video_delete.php?v_id=<?php echo $v_id; ?>&a_id=<?php echo $a_id; ?>&m_id=<?php echo $m_id; ?> onclick="return confirm('<?php echo get_label(38,$language); ?>');"><img src=/images/delete.png width=24 height=24 alt="delete video"></a>
 		            <br><br>
 		            <form name="myForm" id="myForm" action="http://www.asyncmeeting.com/video_save_comments.php?a_id=<?php echo $a_id; ?>&v_id=<?php echo $arr_videos[0]['video_id']; ?>" method="POST">
 		            <input type="hidden" name="VideoName" value="<?php echo $arr_videos[0]['video_id'] ?>">
-				<table width=100% border=0><tr><td>
-		                <table>
+				<table width=100% border=0 align=center><tr><td>
+		                <table align=center class=btable>
 		                    	<thead><tr><th>New Comments:</th></tr></thead><tbody>
                			    	<tr><td id="petCell"><input type="button" id="addPet" value="Add Comments" /><br /></td></tr>
+            			        <tr><td><br><input type="submit" name="submit" value="<?php echo get_label(35,$language);?>"></td></tr>
 					</tbody>
 		                </table>
-            			<br><input type="submit" name="submit" value="<?php echo get_label(35,$language);?>">
 				</td><td>
-				<table>
+				<table align=center class=btable>
 					<thead><tr><th colspan=4>Comments:</th></tr></thead><tbody>
 					<?php
 						$c_arr=video_comments_list($arr_videos[0]['video_id']);
@@ -113,7 +112,7 @@ try {
 		</td></tr>
 		<tr><td>
 			<?php
-				echo "<table><thead><tr><th>";
+				echo "<table align=center class=btable><thead><tr><th>";
 					echo get_label(36,$language);
 				echo "</th></tr><tbody>";
 				if( isset($_GET['v_id']) || !empty($_GET['v_id']) )
