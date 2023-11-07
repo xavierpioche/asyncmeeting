@@ -106,6 +106,7 @@ try {
 			</table>
 		</td></tr>
 		<tr><td colspan=4 align=center>
+			<br><br>
 			<table border=1 align=center class=btable>
 			<thead>
 			<tr><th align=center colspan=2><?php echo get_label(30,$language); ?></th></tr>

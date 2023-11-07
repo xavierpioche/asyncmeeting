@@ -46,6 +46,7 @@ function video_comments_delete($v_id, $c_id)
 {
 	global $pdo;
 	$sql="delete from videos_comments where comment_videolink=:v_id and comment_id=:c_id";
+	//$sql="delete from videos_comments where comment_videolink=:v_id and comment_id=:c_id and comment_owner=:c_owner";
 	$data = [];
 	$data = [
 		"v_id" => $v_id,
@@ -77,9 +78,11 @@ function video_comments_get($c_id)
 	];
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute($data);	
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	return($row['comment_value']);
 }
 
-function video_comments_modify($c_id, $c_comment)
+function video_comments_modify($c_id, $c_value)
 {
 	global $pdo;
 	$sql="update videos_comments set comment_value=:c_value where comment_id=:c_id";

@@ -93,7 +93,8 @@ try {
 						foreach($c_arr as $values)
 						{
 							echo "<tr><td>".$values['comment_time']."</td><td>".$values['comment_value']."</td>";
-							echo "<td><img src=/images/edit-button.png></td><td><img src=/images/remove.png></td>";
+							echo "<td width=30 align=center><a href=comments_edit.php?v_id=".$v_id."&m_id=".$m_id."&a_id=".$a_id."&c_id=".$values['comment_id']."><img src=/images/edit-button.png></a></td>";
+							echo "<td width=30 align=center><a href=comments_delete.php?v_id=".$v_id."&m_id=".$m_id."&a_id=".$a_id."&c_id=".$values['comment_id']." onclick=\"return confirm('".get_label(38,$language)."');\"><img src=/images/remove.png></a></td>";
 							echo "</tr>";
 						}
 					?>
