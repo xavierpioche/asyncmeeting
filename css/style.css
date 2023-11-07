@@ -20,10 +20,8 @@ caption {
 
 table {
   border-collapse: collapse;
-  border: 0px solid rgb(25, 53, 65);
+  border: 0px solid rgb(5, 5, 5);
   #border: 0px solid rgb(200, 200, 200);
-  border-color: #3f87a6;
-  #border-color: #e4f0f5;
   letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
@@ -40,8 +38,8 @@ td {
   text-align: center;
 }
 th {
-  border: 1px solid rgb(25,53,65);
-  #border: 1px solid rgb(190, 190, 190);
+  border: 1px solid rgb(255,253,245);
+  border-color: #3f87a6;
   padding: 5px 10px;
   text-align: center;
 }
@@ -71,6 +69,7 @@ h1 {
 }
 .hoverTable th {
   border: 1px solid rgb(25, 53, 65);
+  border-color: #3f87a6;
   padding: 5px 10px;
   background-color: #3f87a6;
 }

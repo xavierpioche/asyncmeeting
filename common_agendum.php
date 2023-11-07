@@ -149,4 +149,37 @@ function agendum_get_name($a_id)
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return($row['agendum_label']);
 }
+function agendum_delete_video_comments($a_id)
+{
+	global $pdo;
+	$sql="delete videos_comments from videos_comments join videos on comment_videolink=video_id where agendum_id=:a_id";
+	$data = [];
+	$data = [
+		"a_id" => $a_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);
+}
+function agendum_delete_video($a_id)
+{
+	global $pdo;
+	$sql="delete from videos where agendum_id=:a_id";
+	$data = [];
+	$data = [
+		"a_id" => $a_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);
+}
+function agendum_delete($a_id)
+{
+	global $pdo;
+	$sql="delete from agendum where agendum_id=:a_id";
+	$data = [];
+	$data = [
+		"a_id" => $a_id
+	];
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute($data);
+}
 ?>

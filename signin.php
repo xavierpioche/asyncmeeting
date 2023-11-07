@@ -16,20 +16,20 @@ try {
     <title><?php echo get_label(10,$language); ?></title>
   </head>
   <body onload='document.form1.username.focus()'>
-    <table border=0 width=100% height=100%>
+    <table border=0 width=100% height=100% class=btable>
     <tr><td align=center valign=middle>
 	<form action="/process.php" method="post" name="form1" onSubmit="return ValidateAll(document.form1.username,document.form1.pwd)">
-	<table border=1 width=400 cellpadding=0 cellspacing=0>
-	<tr><td colspan=2 align=center valign=middle class=ftitle><b><?php echo get_label(10,$language); ?></b></td></tr>
-	<tr><td colspan=2 class=inter>&nbsp;</td></tr>
+	<table border=1 width=400 cellpadding=0 cellspacing=0 align=center>
+	<thead>
+	<tr><th colspan=2 align=center valign=middle class=ftitle><b><?php echo get_label(10,$language); ?></b></tr></tr>
+	</thead>
 	<tr><td class=fcol align=center width=200><label for="username"><?php echo get_label(11,$language); ?>:</label></td>
 	    <td class=fcol align=center><input type="text" id="username" name="username">
 	</tr>
 	<tr><td class=fcol align=center><label for="pwd"><?php echo get_label(12,$language); ?>:</label></td>
 	    <td class=fcol align=center width=200><input type="password" id="pwd" name="pwd"></td>
 	</tr>
-	<tr><td colspan=2 align=center><?php echo get_label(14,$language); ?></td></tr>
-	<tr><td colspan=2 class=inter>&nbsp;</td></tr>
+	<tr><td colspan=2 align=center><i><?php echo get_label(14,$language); ?></i></td></tr>
 	<tr><td colspan=2 align=center><input type="submit" value="<?php echo get_label(13,$language); ?>"></td></tr>
 	</table>
 	<br>

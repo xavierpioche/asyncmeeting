@@ -50,11 +50,12 @@ try {
 			foreach ($agendum as $value)
 			{
 				echo "<tr><td width><a href=video_frame.php?a_id=$value[0] target='theframe'>$value[1]</a></td>";
-				echo "<td width=26px><img src=/images/edit-button.png></td><td width=26px><img src=/images/remove.png></td>";
+				echo "<td width=26px><a href=agendum_edit.php?a_id=$value[0]&m_id=$m_id><img src=/images/edit-button.png></a></td>";
+				echo "<td width=26px><a href=agendum_delete.php?a_id=$value[0]&m_id=$m_id><img src=/images/remove.png></a></td>";
 				echo "</tr>";
 			}
 		?>
-			<tr><td align=center colspan=3><img src=/images/more.png width=24 height=24></td></tr>
+			<tr><td align=center colspan=3><a href=agendum_add.php?m_id=<?php echo $m_id; ?>><img src=/images/more.png width=24 height=24></a></td></tr>
 		</tbody>
 		</table>
 		<br>
@@ -90,7 +91,7 @@ try {
 		?>
 		<table border=0 width=100%>
 		<tr><td align=center>
-			<?php echo "<iframe name=theframe src='video_frame.php?a_id=$a_id' width=100% height=800>" ?>
+			<?php echo "<iframe border=0 name=theframe src='video_frame.php?a_id=$a_id' width=100% height=800>" ?>
 			</iframe>
 		</td></tr>
 		</table>

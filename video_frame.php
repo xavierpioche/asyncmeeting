@@ -134,8 +134,10 @@ try {
 <?php
 	} else {
 		// ce n est pas notre agendum
-		echo "m_id=$m_id a_id=$a_id u_id=$user_id<br>";
-		echo "not authorized";
+		
+		//echo "m_id=$m_id a_id=$a_id u_id=$user_id<br>";
+		//echo "not authorized";
+		echo "<b>!&nbsp;".get_label(43,$language)."&nbsp;!</b>";
 	}
 //----------------------
                 } else {
